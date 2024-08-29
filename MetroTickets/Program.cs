@@ -13,14 +13,16 @@ namespace MetroTickets
 
             Graph graph = Graph.getInstance();
 
-
             while (true)
             {
+                //Display Stations
                 graph.DisplayStations();
 
+                //Get inputs
                 int currentStation = HelperFunctions.GetInputStation(Constats.ENTER_CURRENT_STATION);
                 int destinationStation = HelperFunctions.GetInputStation(Constats.ENTER_DESTINATION_STATION);
 
+                // Get Distance
                 Result<int> result = graph.FindDistance(currentStation, destinationStation);
 
                 if (!result.IsSuccess)
@@ -29,8 +31,10 @@ namespace MetroTickets
                     return;
                 }
 
+                // Calculate the price
                 int price = HelperFunctions.CalcPrice(result.Data);
 
+                //Output
                 Console.WriteLine($"{Constats.SHOULD_PAY} {price} {Constats.EGP}");
 
                 Thread.Sleep(3000);

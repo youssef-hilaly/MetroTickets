@@ -11,6 +11,7 @@ namespace MetroTickets.Helpers
 {
     internal class HelperFunctions
     {
+        // Get Input
         public static int GetInputStation(string s)
         {
             while (true)
@@ -34,18 +35,19 @@ namespace MetroTickets.Helpers
             }
         }
 
-        public static int CalcPrice(int count)
+        // Calculate the Price 
+        public static int CalcPrice(int distance)
         {
 
-            if (count <= Constats.FIRST_TICKET_LIMIT)
+            if (distance <= Constats.FIRST_TICKET_LIMIT)
             {
                 return Constats.FIRST_TICKET_PRICE;
             }
-            else if (count >= Constats.FIRST_TICKET_LIMIT && count <= Constats.SECOND_TICKET_LIMIT)
+            else if (distance >= Constats.FIRST_TICKET_LIMIT && distance <= Constats.SECOND_TICKET_LIMIT)
             {
                 return Constats.SECOND_TICKET_PRICE;
             }
-            else if (count >= Constats.SECOND_TICKET_LIMIT && count <= Constats.THIRD_TICKET_LIMIT)
+            else if (distance >= Constats.SECOND_TICKET_LIMIT && distance <= Constats.THIRD_TICKET_LIMIT)
             {
                 return Constats.THIRD_TICKET_PRICE;
             }

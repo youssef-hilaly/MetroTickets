@@ -9,11 +9,15 @@ namespace MetroTickets.Helpers
     internal class Cache
     {
         private static  SortedDictionary<(int from, int to), int> cache = new SortedDictionary<(int from, int to), int>();
-        private static int cacheLimit = 50;
+        private const int CACHE_LIMIT = 50;
+        public static int Get(int from, int to)
+        {
+            return cache[(from, to)];
+        }
 
         public static void AddToCache(int from, int to, int distance)
         {
-            if (cache.Count >= cacheLimit)
+            if (cache.Count >= CACHE_LIMIT)
             {
                 cache.Remove(cache.Keys.Last());
             }
@@ -24,11 +28,5 @@ namespace MetroTickets.Helpers
         {
             return cache.ContainsKey((from, to));
         }
-
-        public static int Get(int from, int to)
-        {
-            return cache[(from, to)];
-        }
-
     }
 }

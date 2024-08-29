@@ -106,6 +106,7 @@ namespace MetroTickets.Helpers
             return Result<int>.Failure($"{Constats.NO_PATH} {from}, {to}");
         }
 
+        
         public void DisplayStations()
         {
             for (int i = 0; i < stations.Count; i++)
