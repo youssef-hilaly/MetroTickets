@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MetroTickets.Constants
 {
-    internal class Constats
+    public class Constats
     {
         public const int STATIONS_COUNT = 35;
         public const int START_STATION = 1;

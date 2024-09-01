@@ -15,17 +15,20 @@ namespace MetroTickets.Helpers
 
         public GraphConstructionToDB()
         {
-            process();
+            Process();
         }
 
-        private void process()
+        // 
+        private void Process()
         {
             Dictionary<string, int> stationsWithIds = new Dictionary<string, int>();
             List<Station> stationsList = new List<Station>();
             List<Edge> edgesList = new List<Edge>();
+
             int StationId = 1;
             int EdgeId = 1;
-            int lastStationId = -1;
+            int previousStationId = -1;
+
             foreach (var line in Metro.lines)
             {
                 foreach (var stationName in line.Value)
@@ -38,14 +41,14 @@ namespace MetroTickets.Helpers
 
                     int currentStationId = stationsWithIds[stationName];
 
-                    if (lastStationId != -1)
+                    if (previousStationId != -1)
                     {
-                        edgesList.Add(new Edge { Id = EdgeId++, FirstId = lastStationId, SecondId = currentStationId, Cost = 1 });
+                        edgesList.Add(new Edge { Id = EdgeId++, FirstId = previousStationId, SecondId = currentStationId, Cost = 1 });
                     }
 
-                    lastStationId = currentStationId;
+                    previousStationId = currentStationId;
                 }
-                lastStationId = -1;
+                previousStationId = -1;
             }
             stationsArray = stationsList.ToArray();
             edgesArray = edgesList.ToArray();

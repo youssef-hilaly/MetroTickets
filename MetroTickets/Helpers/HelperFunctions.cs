@@ -9,7 +9,7 @@ using MetroTickets.DataService.Data;
 
 namespace MetroTickets.Helpers
 {
-    internal class HelperFunctions
+    public class HelperFunctions
     {
         // Get Input
         public static int GetInputStation(string s)
@@ -30,7 +30,6 @@ namespace MetroTickets.Helpers
                     Console.WriteLine(Constats.NO_STATION);
                     continue;
                 }
-
                 return stationNumber;
             }
         }
@@ -38,6 +37,10 @@ namespace MetroTickets.Helpers
         // Calculate the Price 
         public static int CalcPrice(int distance)
         {
+            if(distance <= 0)
+            {
+                throw new ArgumentException("Negative or Zero Distance", "distance");
+            }
 
             if (distance <= Constats.FIRST_TICKET_LIMIT)
             {

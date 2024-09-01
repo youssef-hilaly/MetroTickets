@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace MetroTickets.Helpers
 {
-    internal class Graph
+    public class Graph
     {
 
         private static Graph instance = null;
